@@ -36,11 +36,11 @@
       var url = window.location.href;
       if (url.lastIndexOf("?q=") > 0) {
         // get the index of the parameter, add three (to account for length)
-        var index = url.lastIndexOf("?q=") + 3;
+        var searchloc = url.lastIndexOf("?q=") + 3;
         // get the substring (query) and decode
-        var search = decodeURIComponent(url.substr(index));
+        var searchquery = decodeURIComponent(url.substr(searchloc));
         // regex matches at begnning of line, end of line or word boundary, useful for poetry
-        var regex = new RegExp("(?:^|\\b)(" + search + ")(?:$|\\b)", "gim");
+        var regex = new RegExp("(?:^|\\b)(" + searchquery + ")(?:$|\\b)", "gim");
         // get, add mark and then set content
         var content = document.getElementById("main").innerHTML;
         document.getElementById("main").innerHTML = content.replace(regex, "<mark>$1</mark>");
