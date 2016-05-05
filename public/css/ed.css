@@ -1,10 +1,10 @@
 /* Ed: the minimal edition theme.
- * ___________________   
- * \_   _____/\______ \  
- *  |    __)_  |    |  \ 
+ * ___________________
+ * \_   _____/\______ \
+ *  |    __)_  |    |  \
  *  |        \ |    `   \
  * /_______  //_______  /
- *         \/         \/ 
+ *         \/         \/
  * Designed, built, and released under an MIT license by @elotroalex.
  * Based on the Poole and Lanyon theme by @mdo. Learn more at
  * https://github.com/elotroalex/ed.
@@ -113,7 +113,7 @@ a:focus {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   margin-bottom: .5rem;
-  font-weight: 400; 
+  font-weight: 400;
   font-size: 1.5rem;
   color: #404040;
   letter-spacing: -.025rem;
@@ -196,12 +196,15 @@ abbr[title] {
   cursor: help;
   border-bottom: 1px dotted #e5e5e5;
 }
+mark {
+  color: inherit;
+}
 
 /* Quotes */
 
 blockquote {
 	padding: 0rem 1.5rem 0rem 2rem;
-	margin: 0 0 20px 0; 
+	margin: 0 0 20px 0;
   	color: #454545;
 	border-left: none;
 	font-style: italic;
@@ -800,6 +803,3 @@ ol.bibliography {
 	padding-left: 1rem;
 	text-indent: -1rem;
 }
-
-
-
