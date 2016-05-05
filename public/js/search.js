@@ -37,13 +37,16 @@ var store = [{% for text in site.texts %}{
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
 
-//Query 
+//Query
 
 $(document).ready(function() {
+  $('form#site_search').on('submit', function(e) {
+    e.preventDefault();
+  });
   $('input#search').on('keyup', function () {
 	var resultdiv = $('#results');
 	var query = $(this).val();
- 
+
   //The search is then launched on the index built with Lunr
   var result = index.search(query);
   resultdiv.empty();
@@ -51,7 +54,7 @@ $(document).ready(function() {
   //Loop through, match, and add results
   for (var item in result) {
 	var ref = result[item].ref;
-    var searchitem = '<div class="result"><p><a href="{{ site.baseurl }}'+store[ref].link+'">'+store[ref].title+'</a> by '+store[ref].author+'</p></div>';
+    var searchitem = '<div class="result"><p><a href="{{ site.baseurl }}'+store[ref].link+'?q=' + query + '">'+store[ref].title+'</a> by '+store[ref].author+'</p></div>';
     resultdiv.append(searchitem);
    }
   });
