@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="container content">
+      <div class="container content" id="main">
         {{ content }}
       </div>
     </div>
@@ -33,6 +33,13 @@
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
     <script>
+      var url = window.location.href;
+      if (url.lastIndexOf("?q=") > 0) {
+        var search = url.substr(url.lastIndexOf("?q=") + 3);
+        var regex = new RegExp("\\b(" + search + ")\\b", "gim");
+        var content = document.getElementById("main").innerHTML;
+        document.getElementById("main").innerHTML = content.replace(regex, "<mark>$1</mark>");
+      }
       (function(document) {
         var toggle = document.querySelector('.sidebar-toggle');
         var sidebar = document.querySelector('#sidebar');
