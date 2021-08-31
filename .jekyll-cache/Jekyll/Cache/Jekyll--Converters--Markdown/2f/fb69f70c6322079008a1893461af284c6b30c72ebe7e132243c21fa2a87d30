@@ -1,0 +1,489 @@
+I"��<h2 class="no_toc" id="contents">Contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#prerequisites" id="markdown-toc-prerequisites">Prerequisites</a></li>
+  <li><a href="#installing-ed-easy" id="markdown-toc-installing-ed-easy">Installing Ed: Easy</a></li>
+  <li><a href="#installing-ed-robust" id="markdown-toc-installing-ed-robust">Installing Ed: Robust</a></li>
+  <li><a href="#installing-ed-replacing-an-existing-jekyll-theme" id="markdown-toc-installing-ed-replacing-an-existing-jekyll-theme">Installing Ed: Replacing an existing Jekyll theme</a></li>
+  <li><a href="#jekyll" id="markdown-toc-jekyll">Jekyll</a></li>
+  <li><a href="#markdown-and-kramdown" id="markdown-toc-markdown-and-kramdown">Markdown and kramdown</a></li>
+  <li><a href="#genres" id="markdown-toc-genres">Genres</a></li>
+  <li><a href="#footnotes" id="markdown-toc-footnotes">Footnotes</a></li>
+  <li><a href="#blockquotes" id="markdown-toc-blockquotes">Blockquotes</a></li>
+  <li><a href="#pages" id="markdown-toc-pages">Pages</a></li>
+  <li><a href="#tables-of-content" id="markdown-toc-tables-of-content">Tables of Content</a></li>
+  <li><a href="#bibliographies" id="markdown-toc-bibliographies">Bibliographies</a></li>
+  <li><a href="#tips-and-tricks" id="markdown-toc-tips-and-tricks">Tips and Tricks</a></li>
+  <li><a href="#publishing-a-unix-server" id="markdown-toc-publishing-a-unix-server">Publishing: A UNIX server</a></li>
+  <li><a href="#publishing-github-pages" id="markdown-toc-publishing-github-pages">Publishing: GitHub pages</a></li>
+</ul>
+
+<hr />
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>This documentation was built with beginners in mind, but has the necessary information for more seasoned producers.</p>
+
+<p>To install and use Ed you will be using your terminal. If you need a refresher, I highly recommend “<a href="http://cli.learncodethehardway.org/book/">The Command Line Crash Course</a>.” Working knowledge of HTML and CSS is also taken for granted. If you’re new to HTML and CSS, you may want to check out the relevant courses on <a href="https://www.codecademy.com/learn/web">codecademy.com</a>.</p>
+
+<p>Jekyll does not run very well on Windows machines for now. If you are using Windows, this theme won’t work for you, but we hope that you simply deploy our principles, and parts of our stylesheet, on a system like <a href="https://gohugo.io/">Hugo</a>, which does work on Windows.</p>
+
+<hr />
+
+<h2 id="installing-ed-easy">Installing Ed: Easy</h2>
+
+<p>The easy way to do this is not necessarily the more robust, and may simply not work on your system. The easy way could also be called the ‘lucky’ way. It will work if your system is ready for Ed. Two major caveats to keep in mind if you go the easy route: a) You may run into problems later when some Ed components need updating; and, b) You may run into conflicts if you run several Ruby environments for different projects. That said, if you just want to quickly try Ed, and you don’t run into problems installing, this is perhaps the best approach.</p>
+
+<p>If you’re using a Mac, make sure you have the appropriate version of <a href="https://developer.apple.com/xcode/download/">XCode command line tools</a> for your OSX. Using the terminal’s <code class="language-plaintext highlighter-rouge">cd</code> command, switch to the directory where you want to install your project. Once inside the folder, you are ready to download and start using Ed. Enter each of these lines into your terminal (remember to ignore the <code class="language-plaintext highlighter-rouge">$</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/elotroalex/ed.git
+<span class="nv">$ </span><span class="nb">cd </span>ed
+<span class="nv">$ </span>gem <span class="nb">install </span>bundler
+<span class="nv">$ </span>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>That’s it. To see if Ed is working properly we will take advantage of Jekyll’s built in server. You can build the first version of your site and run the jekyll server at the same time by entering:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll serve
+</code></pre></div></div>
+
+<p>If at any point during this process you had an error you could not resolve, move on to the next section. If the site was rendered fine, copy the url from your terminal log and paste it into your browser of choice (I recommend Firefox). This url usually looks something like this <code class="language-plaintext highlighter-rouge">http://127.0.0.1:4000/ed</code>. At this point you should be looking at your very own working version of Ed:</p>
+
+<p><img src="/ed/assets/screenshot-home.png" alt="Your very own Ed" /></p>
+
+<hr />
+
+<h2 id="installing-ed-robust">Installing Ed: Robust</h2>
+
+<p>The first step to install Ed is to download the source files from GitHub. To do so you must have git installed on your computer. You probably have git already, but if you don’t, the easiest way is probably to install <a href="https://desktop.github.com/">Github Desktop</a> (even though we will be using git and github from the terminal in this tutorial). Mac users may want to ensure they have <a href="https://developer.apple.com/xcode/">Xcode</a> and its command line tools installed as well. To check if git is running on your system enter the following line on your terminal (remember to ignore the $):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>If you don’t get an error, you’re good to go. Using the <code class="language-plaintext highlighter-rouge">cd</code> command on your terminal, navigate to the folder where you keep your web projects. Once you’re in the folder where you want Ed to live, download it from github using the following line (remember you can copy and paste):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/elotroalex/ed.git
+</code></pre></div></div>
+
+<p>At this point you should navigate inside your Ed project folder and stay there until further notice:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>ed
+</code></pre></div></div>
+
+<p>Jekyll is a Ruby gem (Ruby’s name for software packages). The best way to ensure you have the right environment is to use Ruby Version Manager, or <a href="https://rvm.io/">rvm</a>, and the latest stable version of Ruby. To install rvm <em>and</em> a recent version of Ruby at the same time, follow the instructions on rvm’s site. Remember to add <code class="language-plaintext highlighter-rouge">--ruby=2.3.0</code> at the end of the <code class="language-plaintext highlighter-rouge">curl</code> command to install ruby at the same time.</p>
+
+<p>After the process runs succesfully, read the last few lines generated by the terminal. You will see final instructions for making rvm run. Once you finish the process, check to see if rvm is running by entering:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>If you don’t get an error, you’re ready for the next step. If you do get an error, and don’t feel comfortable troubleshooting on the terminal, this is a good opportunity to reach out to a friend who can help. You can leave me a note on <a href="https://github.com/elotroalex/ed/issues">the issues page</a>, for example. I’ll try to get to it as soon as my other commitments permit. If you’re comfortable troubleshooting on your own, I recommend Jekyll’s own <a href="http://jekyllrb.com/docs/troubleshooting/">troubleshooting documentation</a>. Another great strategy for troubleshooting on the terminal is to copy and paste the errors you receive (sans personal information) into your favorite search engine.</p>
+
+<p>The next step is to create a gemset for your jekyll projects. A gemset is a set of gems. If you don’t create and use a gemset, every gem you install will be applied system-wide. This is not necessarily a bad thing, but if you will have several projects with several setups, this strategy will serve you well in the long run. To create a gemset:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm gemset create ed
+</code></pre></div></div>
+
+<p>To use the gemset you just created:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm gemset use ed
+</code></pre></div></div>
+
+<p>N.B. Everytime you open a new tab or window on your terminal you need to declare your gemset using <code class="language-plaintext highlighter-rouge">rvm gemset use ed</code>, or else it will revert to <code class="language-plaintext highlighter-rouge">(default)</code>.</p>
+
+<p>Now that rvm and Ruby are set up, we’re ready to install our first gem: Bundler. Bundler is a gem that allows you to install many gems at the same time using Gemfiles, which is a simple list of specific gems that lives in your project folder. Once you install it, you will be ready to run the Gemfile I provided in the source files. To install Bundler:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">install </span>bundler
+</code></pre></div></div>
+
+<p>You’re very close. Now that Bundler is installed, the final step is to install the right version of Jekyll. To do so run the Gemfile this way (remember you must be inside the <code class="language-plaintext highlighter-rouge">ed</code> folder for this to work):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>If you don’t get any errors, Ed should work at this point. To see if Ed is working properly we will take advantage of Jekyll’s built in server. You can build the first version of your site and run the jekyll server at the same time by entering:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll serve
+</code></pre></div></div>
+
+<p>If you are running multiple Ruby environments using bundler, you will need to add <code class="language-plaintext highlighter-rouge">bundle exec</code> to the command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>Copy the url from your terminal log and paste it into your browser of choice (I recommend Firefox). This url usually looks something like this <code class="language-plaintext highlighter-rouge">http://127.0.0.1:4000/ed</code>. At this point you should be looking at your very own working version of Ed:</p>
+
+<p><img src="/ed/assets/screenshot-home.png" alt="Your very own Ed" /></p>
+
+<hr />
+
+<h2 id="installing-ed-replacing-an-existing-jekyll-theme">Installing Ed: Replacing an existing Jekyll theme</h2>
+
+<p>Ed, like Jekyll, is also a gem. Jekyll gives you the option to switch themes, as long as those themes are gems as well. If you have existing content and would like to use Ed, you need to add the following line to your _config.yml file, usually at the bottom:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>theme: "ed."
+</code></pre></div></div>
+
+<p>You also need to add the gem to your Gemfile file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem "ed.", "0.1.1"
+</code></pre></div></div>
+
+<p>Make sure to replace the version number with the one you need. I will do my best to document what changes come with each new gem. If your current theme does not have a Gemfile, you would need to create one and add the line above. The Gemfile is a plain text file like all other files in Jekyll, and should not have a file extension.</p>
+
+<p>After these files have been modified, you need to update your Bundle in the terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle update
+</code></pre></div></div>
+
+<p>When using the gem on top of a previous theme, you will not have all the files of a full Ed install immediately available to you. More importantly, you may not have a _texts folder. You need to create one or copy them from a full installation of Ed. You might also want to add the search and index file. The gem comes bundled with all these files once you install it on your system, but they won’t be in the same folder as your project. To locate them you can refer to the <a href="https://jekyllrb.com/docs/themes/">Jekyll documentation for gem-based themes</a>. With some previous themes you might need to erase lingering files that interfere with the functioning of Ed. This can be an advanced operation I can’t do justice to here. At that point you might need to familiarize yourself with the architecture of Jekyll, or pay close attention to errors when you try to serve the site, and reverse-engineer from there.</p>
+
+<p>Going forward, updating to a new version of Ed is as simple as changing the release version and running the bundle update. I will try to keep changes in the actual markup to a minimum, but will let users know if any changes require a global find and replace in your editions.</p>
+
+<hr />
+
+<h2 id="jekyll">Jekyll</h2>
+
+<p>Ed is a Jekyll theme. That means you will need some familiarity with Jekyll to take advantage of its full potential. While running a Jekyll site is a bit more involved than Wordpress and other similar tools, the payoff in the long term is worth the effort to learn it. If you are new to Jekyll, I recommend you take a look at <a href="http://chronicle.com/blogs/profhacker/jekyll1/60913">“How (and Why) to Generate a Static Website Using Jekyll”</a> at ProfHacker, Amanda Visconti’s excellent <a href="http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages">Building a static website with Jekyll and GitHub Pages</a> on <em>The Programming Historian</em> and <a href="http://jekyllrb.com/">Jekyll’s own documentation</a> to start getting a sense of how it works.</p>
+
+<p>Once you have gone through these tutorials, you can get started using Ed by replacing the sample texts included in in the <code class="language-plaintext highlighter-rouge">_texts</code> folder in Ed with your own edited texts. Remember to always and only edit files in Ed using <a href="https://en.wikipedia.org/wiki/Text_editor">a plain text editor</a>, and <em>not</em> a word processor. I’m composing this file using a plain text editor called <a href="http://www.sublimetext.com/">Sublime Text</a>.</p>
+
+<p>An easy way to make new texts is to copy an existing text, replace the content and rename the file. Remember to always use the jekyll convention for naming files: <code class="language-plaintext highlighter-rouge">your-title.md</code>. You should also make sure that all your texts have the YAML front matter (the information at the top of the file). YAML stands for “YAML Ain’t Markup Language”—no disrespect to XML—and it’s the main way that Jekyll handles named data. Here’s an example of YAML front matter:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">poem</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Cahier</span><span class="nv"> </span><span class="s">d'un</span><span class="nv"> </span><span class="s">retour</span><span class="nv"> </span><span class="s">au</span><span class="nv"> </span><span class="s">pays</span><span class="nv"> </span><span class="s">natal"</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">Aimé Césaire</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>Besides replacing content and creating new texts, you will probably  want to edit the <code class="language-plaintext highlighter-rouge">_config.yml</code> file to replace the boilerplate information we provided with your own personalized information in the relevant categories. Avoid replacing the information in categories that are not clear to you. Make sure to use proper YAML formatting when writing in the <code class="language-plaintext highlighter-rouge">_config.yml</code> file. Here’s <a href="http://docs.ansible.com/ansible/YAMLSyntax.html">a good reference source</a> in case you have doubts.</p>
+
+<hr />
+
+<h2 id="markdown-and-kramdown">Markdown and kramdown</h2>
+
+<p>Ed is designed for scholars and amateur editors who want to produce either a clean reading edition or a scholarly annotated edition of a text. The main language we use to write in the Jekyll environment is called Markdown. To learn more about the Markdown family, see Dennis Tenen and Grant Wythoff’s “<a href="http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown">Sustainable Authorship in Plain Text using Pandoc and Markdown</a>.”</p>
+
+<p>Our version of Jekyll uses a special Markdown processor called kramdown. The processor can be said to use it’s own ‘flavor’ of Markdown, and sometimes the Markdown syntax will be different than other flavors of Markdown. Kramdown is convenient for scholars because of the way it handles footnotes. You can become familiar with the kramdown syntax in the <a href="http://kramdown.gettalong.org/syntax.html">kramdown documentation</a>. Another way to become familiar is to examine the sample text source files we provided.</p>
+
+<hr />
+
+<h2 id="genres">Genres</h2>
+
+<p>Ed offers three different layouts: poem, narrative and drama. The genre is indicated in the YAML front matter on your texts. The templates that govern how these genres are displayed can be found in the <code class="language-plaintext highlighter-rouge">_layouts</code> folder. Using these layouts will allow you to tweak the stylesheets according to your different needs. Out of the box, Ed contains some special instructions for poetry in its stylesheets that allow you to deal with some of the peculiarities of poetry layouts.</p>
+
+<p>To indicate lines in poetry we use the line syntax from Markdown:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> Hold fast to dreams
+<span class="p">-</span> For if dreams die
+<span class="p">-</span> Life is a broken-winged bird
+<span class="p">-</span> That cannot fly.
+<span class="p">-</span> Hold fast to dreams
+<span class="p">-</span> For when dreams go
+<span class="p">-</span> Life is a barren field
+<span class="p">-</span> Frozen with snow.
+</code></pre></div></div>
+
+<p>To indent specific lines we take advantage of a feature in kramdown that allows us to indicate classes for a line. This approach still allows the line to be readable while editing.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> {:.indent-3} But O heart! heart! heart!
+<span class="p">-</span> {:.indent-4} O the bleeding drops of red,
+<span class="p">-</span> {:.indent-5} Where on the deck my Captain lies,
+<span class="p">-</span> {:.indent-6} Fallen cold and dead.
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">-</code> at the beginning of each line indicates that these are lines. The <code class="language-plaintext highlighter-rouge">{:.indent-3}</code> is what we need to in order to indicate the indent value for that line. Values can range from 1-10. You can expand the range or adjust the values in the Ed stylesheet (<code class="language-plaintext highlighter-rouge">_ed.scss</code>) in the <code class="language-plaintext highlighter-rouge">_sass</code> folder.</p>
+
+<p>The example from Raisin in the Sun shows us that we don’t need much special markup for theater as long as we use CAPITAL LETTERS for speakers. Italics for directions are easy enough. Just use <code class="language-plaintext highlighter-rouge">*</code> around the words you want to italicize.</p>
+
+<p><em>Narrative of the Life of Frederick Douglass</em> shows us an example of narrative that includes footnotes and quoted poetry. See the sections below for how to accomplish these different effects.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+
+<p>Footnotes are the bread and butter of scholarship. Kramdown makes footnotes a fairly simple affair:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- O Captain! my Captain! rise up and hear the bells; 
+- Rise up—for you the flag is flung—for you the bugle[^fn2] trills,
+
+...
+
+[^fn2]: The bugle is a small trumpet implicated in the military industrial complex.
+</code></pre></div></div>
+
+<p>These footnotes can be placed anywhere, but they will always be generated at the bottom of the document. To have a multi-paragraph footnote you need to start the footnote text on the next line after the footnote anchor and indent it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[^fn3]:
+	Ugh pinterest fixie cronut pitchfork beard. Literally deep 
+	cold-pressed distillery pabst austin. 
+
+	Typewriter 90's roof party poutine, kickstarter raw 
+	denim pabst readymade biodiesel umami chicharrones XOXO. 
+</code></pre></div></div>
+
+<p>The footnotes system provided by kramdown does have one limitation: It generates the numeration for you automatically, and it only allows you to have one set of footnotes for a text. In some cases we have to separate the author’s footnotes from our own, in others we want to represent the author’s own footnote style. In these cases we have to use HTML. Here’s the example from <em>Narrative of the Life</em>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>... At this time, Anna,<span class="nt">&lt;sup&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#fn2"</span> <span class="na">id=</span><span class="s">"ref2"</span><span class="nt">&gt;</span>\*<span class="nt">&lt;/a&gt;&lt;/sup&gt;</span> my intended wife, came on;
+
+...
+
+<span class="nt">&lt;sup</span> <span class="na">id=</span><span class="s">"fn2"</span><span class="nt">&gt;</span>*<span class="nt">&lt;/sup&gt;</span> She was free. [<span class="ni">&amp;#x21a9;&amp;#xfe0e;</span>](#ref2)
+</code></pre></div></div>
+
+<p>Notice the double HTML Entity (hex), <code class="language-plaintext highlighter-rouge">&amp;#x21a9;&amp;#xfe0e;</code>, used at the end of the footnote to return us to the top. The first hex is the ↩︎ symbol proper. The second assigns the proper variant glyph. This is a necessary hack while we wait for Apple devices to stop turning everything into unseemly emojis.</p>
+
+<hr />
+
+<h2 id="blockquotes">Blockquotes</h2>
+
+<p><em>Narrative of the Life</em> also includes several blockquotes. You can also find another example of blockquote use in the footnote of “O Captain! My Captain!” Simple blockquotes are simple enough in kramdown:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is to certify that I, the undersigned, have given the bearer, my servant, full liberty to go to Baltimore, and spend the Easter holidays.
+&gt;
+&gt; Written with mine own hand, &amp;c., 1835.  
+&gt; WILLIAM HAMILTON,
+</code></pre></div></div>
+
+<p>To use a line break in block elements add two spaces after the end of the line where you want the break. You can’t see them after <code class="language-plaintext highlighter-rouge">&amp;c., 1835.</code> but they are there.</p>
+
+<p>Things get a bit complicated when we want to use poetry inside the block or when the block is included in another block element, like a footnote. Here’s the last two stanzas from “A Parody” in <em>Narrative of the Life</em>, which shows an example of a blockquote of poetry:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+&gt; - Two others oped their iron jaws,
+&gt; - And waved their children-stealing paws;
+&gt; - There sat their children in gewgaws;
+&gt; - By stinting negroes' backs and maws,
+&gt; - They kept up heavenly union.
+&gt; ^
+&gt; - All good from Jack another takes,
+&gt; - And entertains their flirts and rakes,
+&gt; - Who dress as sleek as glossy snakes,
+&gt; - And cram their mouths with sweetened cakes;
+&gt; - And this goes down for union.
+{:.poetry}
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">{:.poetry}</code> tag at the end tells the processor to think of the lines above it as poetry. The <code class="language-plaintext highlighter-rouge">{:.poetry}</code> tag is an example of kramdown class assignments for block-elements. Because this segment of poetry exists in the ‘narrative’ layout, and because it is part of a blockquote, we need to signal to the processor to process poetry this way, so that the right class is invoked in the stylesheet. Notice also the <code class="language-plaintext highlighter-rouge">^</code> separating the stanzas. This bit of kramdown syntax helps us separate the stanzas while staying within the blockquote. The good news is this is the most complex kramdown syntax layout you will encounter in Ed.</p>
+
+<h2 id="pages">Pages</h2>
+
+<p>Your editions are treated as <a href="https://jekyllrb.com/docs/collections/">collections</a> in Ed. Other web pages in your site exist outside the <code class="language-plaintext highlighter-rouge">_texts</code> folder. The homepage, for example, is constructed from the <code class="language-plaintext highlighter-rouge">index.html</code> file found on the root folder of your Ed project.</p>
+
+<p>You will notice that the homepage in particular has a <code class="language-plaintext highlighter-rouge">.html</code> file ending instead of a <code class="language-plaintext highlighter-rouge">.md</code> ending. All template files in Jekyll are HTML, and the index behaves as a template file. Although these files are mostly written in HTML, notice that they still contain YAML front matter and liquid tags. To edit the homepage replace the content on the file shipped with Ed, making sure that your changes to <code class="language-plaintext highlighter-rouge">index.html</code> are written in valid HTML. The same goes for the template files in the <code class="language-plaintext highlighter-rouge">_layouts</code> folder.</p>
+
+<p>Ed also comes with a search page, <code class="language-plaintext highlighter-rouge">search.html</code>. This page implements <a href="http://elasticlunr.com/">elastic lunr</a>, “a lightweight full-text search engine in Javascript for browser search and offline search.” This simple search page can be useful if you have large collections of texts. If you don’t, and don’t feel the need, go ahead and delete it along with the <code class="language-plaintext highlighter-rouge">assets/js</code> folder.</p>
+
+<p>Besides the homepage and the search page, Ed ships with an About page, <code class="language-plaintext highlighter-rouge">about.md</code> and a documentation page, <code class="language-plaintext highlighter-rouge">documentation.md</code>, i.e. this page. As you can see, these are regular <code class="language-plaintext highlighter-rouge">.md</code> files. You can replace the contents of each file using normal kramdown syntax. This also applies to any new page you create, which you should remember to save with an <code class="language-plaintext highlighter-rouge">.md</code> extension. When editing the <code class="language-plaintext highlighter-rouge">bibliography.md</code> file, be careful not to replace the liquid tag that generates your bibliography, unless you don’t want to have a bibliography at all.</p>
+
+<hr />
+
+<h2 id="tables-of-content">Tables of Content</h2>
+
+<p>You will find three kinds of Tables of Content in Ed. The first example is in the list of Sample Texts in the Homepage. This list is generated using the <a href="http://liquidmarkup.org/">Liquid Templating language</a>. This is one of the major components of Jekyll, and I recommend you deepen your knowledge of it if you want to modify the logic that automates much of Ed. Here is the code that generates the Sample Texts list on the homepage:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"toc"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>Sample texts<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"text-title"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/ed/texts/a-julia/"</span><span class="nt">&gt;</span>
+        A Julia de Burgos
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"text-title"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/ed/texts/delayed/"</span><span class="nt">&gt;</span>
+        Delayed till she had ceased to know
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"text-title"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/ed/texts/dreams/"</span><span class="nt">&gt;</span>
+        Dreams
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"text-title"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/ed/texts/narrative/"</span><span class="nt">&gt;</span>
+        Narrative of the Life of Frederick Douglass
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"text-title"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/ed/texts/o-captain/"</span><span class="nt">&gt;</span>
+        O Captain! My Captain!
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"text-title"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/ed/texts/raising/"</span><span class="nt">&gt;</span>
+        A Raisin in the Sun
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+  
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>As you can see, the liquid tags <code class="language-plaintext highlighter-rouge">{% %}</code> and <code class="language-plaintext highlighter-rouge">{{ }}</code> are embedded into the HTML. Those with <code class="language-plaintext highlighter-rouge">{% %}</code> often use programmatic logic, as is the case here. If you are not already familiar with programming languages, you may need to start elsewhere. I recommend learning Ruby, since this is the language used to build jekyll and jekyll-scholar in the first place (it’s also the first programming language I used, so I’m biased). The <code class="language-plaintext highlighter-rouge">{{ }}</code> simply pulls data from your project. In the example above it pulls the title from each ‘post’, i.e. each edited text. As you may have noticed already, we are basically adapting the blogging features of Jekyll to our own ends, what Cuban designer and theorist Ernesto Oroza would call “<a href="http://www.ernestooroza.com/">technological dissobedience</a>.”</p>
+
+<p>The second kind of table of content is exemplified in this documentation. If you open the source file for the documentation, you will notice at the top this snippet:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Contents</span>
+{:.no_toc}
+<span class="p">
+*</span> ToC
+{:toc}
+</code></pre></div></div>
+
+<p>This is the kramdown way. The first tag, <code class="language-plaintext highlighter-rouge">{:.no_toc}</code> tells the processor not to add <code class="language-plaintext highlighter-rouge">## Contents</code> to the ToC. The second part creates an empty list and then tells the processor to replace it with a table of contents based on headers in the document. You can use this syntax in any page on the site that uses headers.</p>
+
+<p>The third way is slightly more involved, but very useful for long texts. If we add the table of contents to the YAML front matter of a page, Ed will activate the optional table of content sidebar (<code class="language-plaintext highlighter-rouge">_includes/sidebar-toc.html</code>) and move the table of contents to a special sidebar for that page. <em>Narrative of the Life</em> uses this method for its table of content. If you would like to replicate this functionality in your own long texts, make sure to use the same syntax:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">toc</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s">Title Page</span>
+<span class="pi">-</span> <span class="s">Preface</span>
+<span class="pi">-</span> <span class="s">Letter From Wendell Phillips</span>
+<span class="pi">-</span> <span class="s">Chapter I</span>
+<span class="pi">-</span> <span class="s">Chapter II</span>
+</code></pre></div></div>
+
+<p>The internal links pointing to the right sections in your document are generated from the title names automatically. In order for the links to work the names on section headings must contain the same words as the section headers. The punctuation and capitalization is irrelevant. If you can figure out how Ed accomplishes this trick, you have graduated from the Ed school of minimal editions.</p>
+
+<hr />
+
+<h2 id="bibliographies">Bibliographies</h2>
+
+<p>If you want to include a small bibliography, and you feel it would be easier to write it out directly, Ed can help you render it with hanging indentation.  To achieve this effect make sure to use the <code class="language-plaintext highlighter-rouge">.bibliography</code> class in an ordered list. For example:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> Douglass, Frederick et al. Narrative of the Life of Frederick Douglass: An American Slave. Charlottesville, Va.: University of Virginia Library, 1996. Open WorldCat. Web. 17 Apr. 2016.
+<span class="p">2.</span> Hansberry, Lorraine, and Robert Nemiroff. A Raisin in the Sun. Rep Rei edition. New York: Vintage, 2004. Print.
+{.bibliography}
+</code></pre></div></div>
+
+<p>Which should display like this:</p>
+
+<ol class="bibliography">
+  <li>Douglass, Frederick et al. Narrative of the Life of Frederick Douglass: An American Slave. Charlottesville, Va.: University of Virginia Library, 1996. Open WorldCat. Web. 17 Apr. 2016.</li>
+  <li>Hansberry, Lorraine, and Robert Nemiroff. A Raisin in the Sun. Rep Rei edition. New York: Vintage, 2004. Print.</li>
+</ol>
+
+<hr />
+
+<p>To help us style and generate bibliographies and citations <em>automatically</em>, Ed can use the jekyll-scholar gem by <a href="https://github.com/inukshuk/">Sylvester Keil</a>. To learn more about the gem beyond the basic instructions below, make sure to read the documentation on the <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> GitHub page. Keep in mind, though, that installing jekyll-scholar and working with it may be a bit difficult for beginners.</p>
+
+<p>If you can get over the hurdles, jekyll-scholar can save you enormous amounts of time in the long term for your citation and bibliographic work. To begin, you must move the contents of the <code class="language-plaintext highlighter-rouge">jekyll-scholar starter kit</code> in your <code class="language-plaintext highlighter-rouge">optional</code> folder into the root folder. This will effectively replace the original <code class="language-plaintext highlighter-rouge">_config.yml</code> and <code class="language-plaintext highlighter-rouge">Gemfile</code> files, and add a <code class="language-plaintext highlighter-rouge">_bibliography</code> folder, and the <code class="language-plaintext highlighter-rouge">bibliography.md</code> and <code class="language-plaintext highlighter-rouge">Rakefile</code> files. To enable jekyll-scholar you must re-run <code class="language-plaintext highlighter-rouge">bundle install</code> again.</p>
+
+<p>If everything goes smoothly, you should be able to start using jekyll-scholar at this point. The first thing you may want to do is provide Jekyll with your own bibliographic information in the form of a <code class="language-plaintext highlighter-rouge">.bib</code> file to replace the content of the <code class="language-plaintext highlighter-rouge">references.bib</code> file we’ve provided in the <code class="language-plaintext highlighter-rouge">_bibliography</code> folder.</p>
+
+<p>To make it easy to create your own version of this file and to keep track of your bibliography for your project, in general I recommend you use <a href="http://zotero.org/">Zotero</a>. To export from Zotero in this format select the references you need from within your Zotero library, right click and select <code class="language-plaintext highlighter-rouge">export in...</code> and choose the BibLaTeX format. Rename your file to <code class="language-plaintext highlighter-rouge">references.bib</code> and move it into the <code class="language-plaintext highlighter-rouge">_bibliography</code> folder. You are, of course, free to create your <code class="language-plaintext highlighter-rouge">references.bib</code> file using any method you prefer as long as it is a BibTeX file.</p>
+
+<p>Because as textual editors we are more likely than not to use citations in footnotes or pages that contain footnotes, and because footnotes will be necessarily generated at the bottom of the page, Ed also needs a separate page for your Bibliography or works cited. This is the role of the <code class="language-plaintext highlighter-rouge">bibliography.md</code> file. Feel free to edit the sample text, but make sure to leave the following line intact:</p>
+
+<pre>
+&#123;% bibliography %&#125;
+</pre>
+
+<p>To link your citations to the bibliography page, instead of writing them by hand, you can use the cite function in jekyll-scholar:</p>
+
+<pre>
+&#123;% cite cesaire_discourse_2001 %&#125;
+</pre>
+
+<p>Here’s the breakdown:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cite</code> is the jekyllscholar command.</li>
+  <li><code class="language-plaintext highlighter-rouge">cesaire_discourse_2001</code> is the unique ID for Césaire’s <em>Discourse on Colonialism</em> entry included in the reference.bib file.</li>
+</ul>
+
+<p>Note that our jekyll-scholar starter kit comes ready for MLA style. To use Chicago style or more advanced citation features, refer to the documentation on jekyll-scholar to make the appropriate changes.</p>
+
+<p><strong>Publishing your site on Github Pages with jekyll-scholar</strong></p>
+
+<p>If you install jekyll-scholar, or most other plugins in Jekyll, you will need a workaround to publish your site on Github Pages, which only runs in ‘safe mode.’ I’ve provided a slightly modified version of a <code class="language-plaintext highlighter-rouge">Rakefile</code> originally created by <a href="https://blog.sorryapp.com/blogging-with-jekyll/2014/01/31/using-jekyll-plugins-on-github-pages.html">Robert Rawlins</a> that will help you accomplish this task. Once you are ready to publish, switch to your <code class="language-plaintext highlighter-rouge">gh-pages</code> branch and run the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rake ed:publish
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+
+<ul>
+  <li>The folding sidebar menu is generated from the <code class="language-plaintext highlighter-rouge">sidebar.html</code> file in the <code class="language-plaintext highlighter-rouge">_includes</code> folder. The top menu items are generated automatically from your pages. The bottom menu items are manually written in HTML. This structure can allow you to add external links. If you don’t have that many pages, you may choose to do all the links by hand.</li>
+  <li>For more hand-crafted layouts—such as <a href="/ed/texts/narrative/index.html#title-page">the title page in <em>The Narrative of the Life</em></a>—you may choose to work directly with HTML. One of the great advantages of working with the kramdown processor is that we have a lot of flexibility to mix HTML with the kramdown syntax. Note though, that even in the case of the title page, you can achieve these effects using kramdown syntax.</li>
+  <li>Make sure to add horizontal rules, <code class="language-plaintext highlighter-rouge">---</code>, to separate sections in your texts. This creates a more pleasant layout.</li>
+  <li>You can clean unnecessary folders and files from the original Ed package before publishing your site. This will help you reduce overhead. For example, you can erase this page, the sample texts and the <code class="language-plaintext highlighter-rouge">syntax.css</code> file (used for styling code).</li>
+  <li>Consider providing tips for your readers on how to make their font bigger or smaller by taking advantage of <kbd>Command</kbd> + <kbd>+</kbd> and <kbd>Command</kbd> + <kbd>-</kbd>. Or returning to the top of the page using <kbd>Command</kbd> + <kbd>Up Arrow</kbd>. Part of the philosophy behind Ed is to avoid duplicating features that are already easily available in most web ecosystems.</li>
+  <li>If you want to allow annotations on your site, consider providing a <code class="language-plaintext highlighter-rouge">via.hypothes.is</code> link. Our sample site can be annotated, for example, using the following link: <code class="language-plaintext highlighter-rouge">https://via.hypothes.is/http://elotroalex.github.io/ed/</code>, which readers can access on the sidebar. Once you’ve indicated your own URL in the config file, the link will update automatically. Make sure to visit <a href="https://hypothes.is/">hypothes.is</a> to learn more.</li>
+  <li>Ed includes metadata in the headers that makes it easier for users of Zotero, and other systems to grab bibliographic information for the site and individual texts. Our metadata functionality may not be enough to generate a full proper citation. Consider providing visible citation information in your about page or homepage.</li>
+  <li>Make sure to deepen your knowledge of the building blocks of Ed: Jekyll, YAML and Liquid. A great list of resources can be found in the blog “<a href="http://jameswillweb.github.io/jekyll-for-designers/resources.html">Jekyll for Web Designers</a>”.</li>
+  <li>Our base themes Poole/Lanyon allow for easily customization of the interface. You can, for example, switch the position of the sidebar, change the theme colors and overlay options. To learn more check out the <a href="https://github.com/poole/lanyon#themes">Lanyon documentation</a>, and make sure to try the green, <code class="language-plaintext highlighter-rouge">.theme-base-0b</code>, it’s really nice.</li>
+  <li>You can change the look and feel of the site as a whole by changing the <code class="language-plaintext highlighter-rouge">color-scheme</code> in the <code class="language-plaintext highlighter-rouge">_config.yml</code> file. If you want to have more granularity, short of editing the <code class="language-plaintext highlighter-rouge">css</code>, you can change the variable values in the <code class="language-plaintext highlighter-rouge">assets/css/style.scss</code> file.</li>
+  <li>In the <code class="language-plaintext highlighter-rouge">optional</code> folder you will find a sample <code class="language-plaintext highlighter-rouge">xslt</code> to help you get started converting TEI to Ed. You will also find css for adding pop-up “balloons” or tooltips to your texts.</li>
+</ul>
+
+<hr />
+
+<h2 id="publishing-a-unix-server">Publishing: A UNIX server</h2>
+
+<p>Publishing and Ed edition can be done in one of two ways. One way is to host it on a server you rent, own or have access to. Most mortals pay a hosting provider to host their sites. I recommend <a href="https://reclaimhosting.com/">Reclaim Hosting</a>, which is run by scholars for scholars. If you are affiliated with a university, chances are that your institution provides you with a UNIX account and a bit of server space. Since Jekyll generates a full static site for you, that means you can park it there too. To do so you need to build the site first. If you have been keeping your eye on your project by using <code class="language-plaintext highlighter-rouge">jekyll serve</code>, chances are you have a current built site in your project folder labelled <code class="language-plaintext highlighter-rouge">_site</code>.</p>
+
+<p>If you don’t already, you can build one easily by using the following Jekyll command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll build
+</code></pre></div></div>
+
+<p>Or, again, if you have multiple environments:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>Using an FTP client like <a href="https://filezilla-project.org/">Filezilla</a>, or <a href="https://www.siteground.com/tutorials/ssh/">SSH on your terminal</a>, you need to push the contents of the <code class="language-plaintext highlighter-rouge">_site</code> folder to the folder on your server where you would like your project to exist. Depending on your host provider, you may be able to receive help from the sys admins with this step.</p>
+
+<p>Please refer to the <a href="#a-note-on-your-base-url">note below on base urls</a> to make sure your new links work on your new site.</p>
+
+<h2 id="publishing-github-pages">Publishing: GitHub pages</h2>
+
+<p>The second option is to publish your site for free on GitHub Pages. 
+Whether you decide to publish on GitHub pages or not, we recommend that you still use git and GitHub to version your edition and make the data available via another channel other than your webpage. This is one of the great advantages of using our system, increasing the chances of survival of your work and opening new audiences for it.</p>
+
+<p>If you do decide to use the GitHub pages option, please make sure to read the <a href="#a-note-on-your-base-url">note below on base urls</a>.</p>
+
+<p>To publish on GitHub pages, you must have a copy of the repository in GitHub. That means you also need an account there. Once you’ve created the repository that you will use, you must link your local repository to the one on GitHub. Notice that because you cloned the original source files from my repository, it will be linked to my repository (to which you don’t have writing privileges) until you do this step. Instructions for changing the remote URL can be found <a href="https://help.github.com/articles/changing-a-remote-s-url/">here</a>.</p>
+
+<p>The usual way of doing it is to create a different git branch called <code class="language-plaintext highlighter-rouge">gh-pages</code> within your local repository for your site. This is a branch is published by GitHub by default. GitHub also gives you the option to select <a href="https://github.com/blog/2228-simpler-github-pages-publishing">any branch you want to publish</a>, including the master branch.</p>
+
+<p>In the following I use the gh-pages branch. To create and use that branch use the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> gh-pages
+</code></pre></div></div>
+
+<p>Once you are using that branch, you are ready to publish your site. To do so use simply push the gh-pages branch to github:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push origin gh-pages
+</code></pre></div></div>
+
+<p>You can now access your site using an address that looks like <code class="language-plaintext highlighter-rouge">http://your-username.github.io/your-project-name</code>. The sample page for Ed, for example, is hosted at <a href="http://elotroalex.github.io/ed">elotroalex.github.io/ed</a>.</p>
+
+<p><strong><span id="a-note-on-your-base-url">A note on your base url</span></strong></p>
+
+<p>When you publish on a subfolder—automatic on GitHub pages—many of your links will break unless you indicate the name of your sub-folder in the <code class="language-plaintext highlighter-rouge">baseurl</code> value in your <code class="language-plaintext highlighter-rouge">_config.html</code> file. In addition, you need to make sure that your site-wide links (your links to your CSS files, for example) are preceded by the <code class="language-plaintext highlighter-rouge">/ed</code> tag. The base Ed install already uses this system, so you can simply replace the value <code class="language-plaintext highlighter-rouge">/ed</code> in your <code class="language-plaintext highlighter-rouge">baseurl</code> to <code class="language-plaintext highlighter-rouge">/your-project-slug</code>.</p>
+
+<p>If on the other hand you are running your site on a root folder, simply erase <code class="language-plaintext highlighter-rouge">/ed</code>, but do make sure to leave the single quotes:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s1">'</span><span class="s">'</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>That should do it. If you have suggestions on how to improve Ed, make sure to leave us a line on <a href="https://github.com/elotroalex/ed/issues">our issues page</a>, or send us a pull request.</p>
+
+<p>Happy editing!</p>
+
+<p>Alex Gil<br />
+April 2016</p>
+:ET
